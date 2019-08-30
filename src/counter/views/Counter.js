@@ -5,13 +5,35 @@ class Counter extends Component {
     super(props);
     this.onClickIncrementButton = this.onClickIncrementButton.bind(this);
     this.onClickDecrementButton = this.onClickDecrementButton.bind(this);
-    this.state = {count: this.initValue||0}
+    this.state = {count: this.props.initValue||0}
+    console.log('enter constructor '+this.props.caption)
+  }
+  componentWillMount(){
+    console.log('enter componetWillMount '+this.props.caption)
+  }
+  componentDidMount(){
+    console.log('enter componetDidMount '+this.props.caption)
+  }
+  componentWillReceiveProps(nextProps){
+    console.log('enter componentWillReceiveProps '+this.props.caption)
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    return (nextProps.caption !== this.props.caption || 
+      nextState.count !== this.state.count)
   }
   onClickIncrementButton(){
-    this.setState({count: this.state.count+1})
+    this.updateCount(true);
+    // this.setState({count: this.state.count+1})
   }
   onClickDecrementButton(){
-    this.setState({count: this.state.count-1})
+    this.updateCount(false);
+    // this.setState({count: this.state.count-1})
+  }
+  updateCount(isIncrement){
+    const preValue = this.state.count;
+    const newValue = isIncrement ? preValue+1 : preValue-1;
+    this.setState({count: newValue});
+    this.props.onUpdate(newValue, preValue);
   }
   render(){
     const {caption} = this.props;
