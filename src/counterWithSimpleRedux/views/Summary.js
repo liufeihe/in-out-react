@@ -14,7 +14,7 @@ class Summary extends Component{
   getOwnState(){
     const state = store.getState();
     let sum = 0;
-    for (let cap in state){
+    for (var cap in state){
       if(state.hasOwnProperty(cap)){
         sum += state[cap];
       }
