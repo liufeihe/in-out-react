@@ -1,5 +1,5 @@
 import React from 'react';
-import CounterPanel from './counter'
+import CounterPanel from './counterWithSimpleRedux'
 import './App.css'
 
 function App() {
