@@ -1,5 +1,6 @@
 import React from 'react';
-import CounterPanel from './counterWithSmartDumb'
+// import CounterPanel from './counterWithSmartDumb'
+import CounterPanel from './counterWithFlux'
 import './App.css'
 
 function App() {
